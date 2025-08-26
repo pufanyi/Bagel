@@ -3,11 +3,11 @@
 
 # replace the variables with your own
 torchrun \
-  --nnodes=$num_nodes \
-  --node_rank=$node_rank \
+  --nnodes=2 \
+  --node_rank=0 \
   --nproc_per_node=8 \
-  --master_addr=$master_addr \
-  --master_port=$master_port \
+  --master_addr=10.10.10.10 \
+  --master_port=29500 \
   train/pretrain_unified_navit.py \
   --dataset_config_file ./data/configs/example.yaml \
   --layer_module Qwen2MoTDecoderLayer \
