@@ -1,0 +1,29 @@
+# Copyright 2025 Bytedance Ltd. and/or its affiliates.
+# SPDX-License-Identifier: Apache-2.0
+
+export PYTHONPATH=$PYTHONPATH:.
+
+CUDA_VISIBLE_DEVICES=2
+
+torchrun \
+  --nnodes=1 \
+  --node_rank=0 \
+  --nproc_per_node=1 \
+  --master_addr=localhost \
+  --master_port=29501 \
+  train/pretrain_unified_navit.py \
+  --dataset_config_file ./data/configs/example.yaml \
+  --model_path /mnt/raid10/pufanyi/Bagel-ckpt/BAGEL-7B-MoT \
+  --layer_module Qwen2MoTDecoderLayer \
+  --max_latent_size 64 \
+  --resume-from /mnt/raid10/pufanyi/Bagel-ckpt/BAGEL-7B-MoT \
+  --finetune_from_hf True \
+  --auto_resume True \
+  --resume-model-only True \
+  --finetune-from-ema True \
+  --log_every 1 \
+  --lr 2e-5 \
+  --num_worker 1 \
+  --expected_num_tokens 10240 \
+  --max_num_tokens 11520 \
+  --max_num_tokens_per_sample 10240

@@ -38,6 +38,8 @@ def get_parquet_data_paths(data_dir_list, num_sampled_data_paths, rank=0, world_
                 for name in files
                 if name.endswith(".parquet")
             ]
+        if len(data_paths_per_dir) == 0:
+            raise ValueError(f"No .parquet files found in {data_dir}")
         repeat = num_data_path // len(data_paths_per_dir)
         data_paths_per_dir = data_paths_per_dir * (repeat + 1)
         local_data_paths.extend(data_paths_per_dir[:num_data_path])

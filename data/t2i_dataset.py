@@ -3,6 +3,7 @@
 
 import io
 import json
+import pyarrow as pa
 import pyarrow.parquet as pq
 import random
 from PIL import Image
@@ -55,12 +56,12 @@ class T2IIterableDataset(DistributedIterableDataset):
             for parquet_idx, parquet_file_path in enumerate(data_paths_per_worker_, start=parquet_start_id):
                 fs = init_arrow_pf_fs(parquet_file_path)
                 with fs.open_input_file(parquet_file_path) as f:
-                    fr = pq.ParquetFile(f)
-                    row_group_ids = list(range(fr.num_row_groups))
+                    pf = pq.ParquetFile(f)
+                    row_group_ids = list(range(pf.num_row_groups))
                     row_group_ids_ = row_group_ids[row_group_start_id:]
 
                     for row_group_id in row_group_ids_:
-                        df = fr.read_row_group(row_group_id).to_pandas()
+                        df = pf.read_row_group(row_group_id).to_pandas()
                         df = df.iloc[row_start_id:]
 
                         for row_idx, row in df.iterrows():

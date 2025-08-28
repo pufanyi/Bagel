@@ -359,9 +359,9 @@ def main():
             resume=training_args.wandb_resume,
             mode="offline" if training_args.wandb_offline else "online"
         )
-        wandb.config.update(training_args)
-        wandb.config.update(model_args)
-        wandb.config.update(data_args)
+        # wandb.config.update(training_args)
+        # wandb.config.update(model_args)
+        # wandb.config.update(data_args)
     else:
         logger = create_logger(None, dist.get_rank())
     dist.barrier()
