@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug pretrain_unified_navit.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/train/pretrain_unified_navit.py",
+            "args": [
+                "--dataset_config_file",
+                "./data/configs/example.yaml",
+                "--layer_module",
+                "Qwen2MoTDecoderLayer",
+                "--vae_path",
+                "/mnt/raid10/pufanyi/hf/hub/models--ByteDance-Seed--BAGEL-7B-MoT/snapshots/570026eca23479ee7df5a6ce9fb50a835530da30/ae.safetensors",
+                "--vit_path",
+                "HuggingFaceM4/siglip-so400m-14-980-flash-attn2-navit",
+                "--llm_path",
+                "Qwen/Qwen2.5-0.5B-Instruct",
+                "--use_flex",
+                "True",
+                "--results_dir",
+                "./results",
+                "--checkpoint_dir",
+                "./temp/checkpoints",
+                "--max_latent_size",
+                "64",
+                "--num_shard",
+                "1",
+                "--cpu_offload",
+                "True",
+                "--expected_num_tokens",
+                "4096",
+                "--num_workers",
+                "1",
+                "--visual_und",
+                "False"
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "CUDA_VISIBLE_DEVICES": "4",
+                "HF_HOME": "/home/data2/pufanyi/cache",
+                "WORLD_SIZE": "1",
+                "RANK": "0",
+                "LOCAL_RANK": "0",
+                "MASTER_ADDR": "127.0.0.1",
+                "MASTER_PORT": "12355"
+            },
+            "console": "integratedTerminal"
+        }
+    ]
+}

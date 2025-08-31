@@ -1,6 +1,5 @@
 wandb
 __pycache__
-.vscode
 notebooks
 results
 *.ipynb_checkpoints
