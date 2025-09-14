@@ -187,6 +187,7 @@ class Bagel(PreTrainedModel):
                 packed_latent.append(latent)
             packed_latent_clean = torch.cat(packed_latent, dim=0)
 
+            torch.manual_seed(42)
             noise = torch.randn_like(packed_latent_clean)
             packed_timesteps = torch.sigmoid(packed_timesteps)
             packed_timesteps = self.timestep_shift * packed_timesteps / (1 + (self.timestep_shift - 1) * packed_timesteps)

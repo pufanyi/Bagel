@@ -9,7 +9,7 @@ llm_path=Qwen/Qwen2.5-0.5B-Instruct
 
 export PYTHONPATH=$PYTHONPATH:.
 
-CUDA_VISIBLE_DEVICES=4 torchrun \
+CUDA_VISIBLE_DEVICES=7 torchrun \
   --nnodes=1 \
   --node_rank=0 \
   --nproc_per_node=1 \

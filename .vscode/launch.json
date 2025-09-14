@@ -38,8 +38,8 @@
             ],
             "env": {
                 "PYTHONPATH": "${workspaceFolder}",
-                "CUDA_VISIBLE_DEVICES": "4",
-                "HF_HOME": "/home/data2/pufanyi/cache",
+                "CUDA_VISIBLE_DEVICES": "7",
+                "HF_HOME": "/mnt/raid10/pufanyi/hf",
                 "WORLD_SIZE": "1",
                 "RANK": "0",
                 "LOCAL_RANK": "0",

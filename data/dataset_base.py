@@ -296,12 +296,12 @@ class PackedDataset(torch.utils.data.IterableDataset):
             sequence_status = self.pack_sequence(sample, sequence_status)
             batch_data_indexes.append(sample['data_indexes'])
 
-            if sequence_status['curr'] >= self.expected_num_tokens:
-                data = self.to_tensor(sequence_status)
-                data['batch_data_indexes'] = batch_data_indexes
-                yield data
-                sequence_status = self.set_sequence_status()
-                batch_data_indexes = []
+            # if sequence_status['curr'] >= self.expected_num_tokens:
+            data = self.to_tensor(sequence_status)
+            data['batch_data_indexes'] = batch_data_indexes
+            yield data
+            sequence_status = self.set_sequence_status()
+            batch_data_indexes = []
 
     def pack_sequence(self, sample, sequence_status):
         image_tensor_list = sample['image_tensor_list']

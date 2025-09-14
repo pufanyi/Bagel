@@ -3,7 +3,7 @@
 
 export PYTHONPATH=$PYTHONPATH:.
 
-CUDA_VISIBLE_DEVICES=2
+CUDA_VISIBLE_DEVICES=7
 
 torchrun \
   --nnodes=1 \
