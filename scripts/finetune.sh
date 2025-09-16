@@ -1,22 +1,25 @@
 # Copyright 2025 Bytedance Ltd. and/or its affiliates.
 # SPDX-License-Identifier: Apache-2.0
 
+. ".venv/bin/activate"
+
 export PYTHONPATH=$PYTHONPATH:.
 
-CUDA_VISIBLE_DEVICES=7
+# CUDA_VISIBLE_DEVICES=7
 
-torchrun \
-  --nnodes=1 \
+python -m torch.distributed.run \
+  --nnodes=2 \
   --node_rank=0 \
   --nproc_per_node=1 \
   --master_addr=localhost \
   --master_port=29501 \
   train/pretrain_unified_navit.py \
+  --data_path pufanyi/BLIP3o-60k-top100 \
   --dataset_config_file ./data/configs/example.yaml \
-  --model_path /mnt/raid10/pufanyi/Bagel-ckpt/BAGEL-7B-MoT \
+  --model_path /mnt/aigc/users/pufanyi/workspace/lmms-engine-mini/playground/models/BAGEL-7B-MoT \
   --layer_module Qwen2MoTDecoderLayer \
   --max_latent_size 64 \
-  --resume-from /mnt/raid10/pufanyi/Bagel-ckpt/BAGEL-7B-MoT \
+  --resume-from /mnt/aigc/users/pufanyi/workspace/lmms-engine-mini/playground/models/BAGEL-7B-MoT \
   --finetune_from_hf True \
   --auto_resume True \
   --resume-model-only True \
