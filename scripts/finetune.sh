@@ -8,11 +8,11 @@ export PYTHONPATH=$PYTHONPATH:.
 # CUDA_VISIBLE_DEVICES=7
 
 python -m torch.distributed.run \
-  --nnodes=2 \
+  --nnodes=1 \
   --node_rank=0 \
-  --nproc_per_node=1 \
+  --nproc_per_node=2 \
   --master_addr=localhost \
-  --master_port=29501 \
+  --master_port=29511 \
   train/pretrain_unified_navit.py \
   --data_path pufanyi/BLIP3o-60k-top100 \
   --dataset_config_file ./data/configs/example.yaml \
