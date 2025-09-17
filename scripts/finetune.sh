@@ -10,11 +10,10 @@ export PYTHONPATH=$PYTHONPATH:.
 python -m torch.distributed.run \
   --nnodes=1 \
   --node_rank=0 \
-  --nproc_per_node=4 \
+  --nproc_per_node=8 \
   --master_addr=localhost \
   --master_port=29511 \
   train/pretrain_unified_navit.py \
-  --visual_und False \
   --dataset_config_file ./data/configs/example.yaml \
   --model_path /mnt/aigc/users/pufanyi/workspace/lmms-engine-mini/playground/models/BAGEL-7B-MoT \
   --layer_module Qwen2MoTDecoderLayer \
@@ -30,4 +29,7 @@ python -m torch.distributed.run \
   --expected_num_tokens 10240 \
   --max_num_tokens 11520 \
   --max_num_tokens_per_sample 10240 \
-  --num_shard 4
+  --num_shard 8 \
+  --wandb_project "BAGEL-i2t-finetune" \
+  --wandb_name "BAGEL-i2t-finetune" \
+  --wandb_runid "0"
