@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Debug pretrain_unified_navit.py",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/train/pretrain_unified_navit.py",
             "args": [
@@ -12,7 +12,7 @@
                 "--layer_module",
                 "Qwen2MoTDecoderLayer",
                 "--vae_path",
-                "/mnt/raid10/pufanyi/hf/hub/models--ByteDance-Seed--BAGEL-7B-MoT/snapshots/570026eca23479ee7df5a6ce9fb50a835530da30/ae.safetensors",
+                "/mnt/aigc/users/pufanyi/workspace/lmms-engine-mini/playground/models/BAGEL-7B-MoT/ae.safetensors",
                 "--vit_path",
                 "HuggingFaceM4/siglip-so400m-14-980-flash-attn2-navit",
                 "--llm_path",
@@ -38,8 +38,6 @@
             ],
             "env": {
                 "PYTHONPATH": "${workspaceFolder}",
-                "CUDA_VISIBLE_DEVICES": "7",
-                "HF_HOME": "/mnt/raid10/pufanyi/hf",
                 "WORLD_SIZE": "1",
                 "RANK": "0",
                 "LOCAL_RANK": "0",

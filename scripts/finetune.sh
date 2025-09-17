@@ -14,7 +14,7 @@ python -m torch.distributed.run \
   --master_addr=localhost \
   --master_port=29511 \
   train/pretrain_unified_navit.py \
-  --data_path pufanyi/BLIP3o-60k-top100 \
+  --visual_und False \
   --dataset_config_file ./data/configs/example.yaml \
   --model_path /mnt/aigc/users/pufanyi/workspace/lmms-engine-mini/playground/models/BAGEL-7B-MoT \
   --layer_module Qwen2MoTDecoderLayer \
@@ -29,4 +29,5 @@ python -m torch.distributed.run \
   --num_worker 1 \
   --expected_num_tokens 10240 \
   --max_num_tokens 11520 \
-  --max_num_tokens_per_sample 10240
+  --max_num_tokens_per_sample 10240 \
+  --num_shard 2

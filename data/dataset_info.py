@@ -16,7 +16,7 @@ DATASET_REGISTRY = {
 DATASET_INFO = {
     't2i_pretrain': {
         't2i': {
-            'data_dir': 'temp/data/bagel_example/t2i', # path of the parquet files
+            'data_dir': '/mnt/aigc/users/pufanyi/workspace/playground/blip3o/blip3o-60k-top100-data', # path of the parquet files
             'num_files': 10, # number of data units to be sharded across all ranks and workers
             'num_total_samples': 1000, # number of total samples in the dataset
         },
