@@ -10,7 +10,7 @@ export PYTHONPATH=$PYTHONPATH:.
 python -m torch.distributed.run \
   --nnodes=1 \
   --node_rank=0 \
-  --nproc_per_node=2 \
+  --nproc_per_node=4 \
   --master_addr=localhost \
   --master_port=29511 \
   train/pretrain_unified_navit.py \
@@ -30,4 +30,4 @@ python -m torch.distributed.run \
   --expected_num_tokens 10240 \
   --max_num_tokens 11520 \
   --max_num_tokens_per_sample 10240 \
-  --num_shard 2
+  --num_shard 4

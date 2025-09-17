@@ -619,7 +619,7 @@ def main():
             assert not training_args.visual_gen
             loss_dict["mse"] = torch.tensor(0, device=device)
             total_mse_tokens = torch.tensor(0, device=device)
-
+        
         optimizer.zero_grad()
         loss.backward()
         total_norm = fsdp_model.clip_grad_norm_(training_args.max_grad_norm)
